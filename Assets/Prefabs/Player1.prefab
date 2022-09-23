@@ -806,7 +806,19 @@ MonoBehaviour:
     m_ActionId: 8e1cc089-8e34-4ad6-b407-43b0a7fb5bf2
     m_ActionName: Player/Fire[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4784742237388041254}
+        m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0996ad7b-5d71-4a93-b396-cb592016b967
     m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
@@ -880,7 +892,9 @@ MonoBehaviour:
   _shooting: {fileID: 4784742237388041249}
   _characterStats: {fileID: 0}
   _moveSpeed: 5.28
-  _turnTime: 0.271
+  _jumpForce: 7
+  _gravity: 15
+  _turnTime: 0.15
 --- !u!114 &4784742237388041249
 MonoBehaviour:
   m_ObjectHideFlags: 0

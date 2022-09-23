@@ -17,7 +17,11 @@ public class PlayerInputController : MonoBehaviour
     [SerializeField] [Range(1f, 10f)] private float _moveSpeed;
     private Vector3 _inputVector;
 
-    [Header("Camera")]
+    [Header("Jumping")]
+    [SerializeField] [Range(5f, 15f)] private float _jumpForce;
+    [SerializeField] [Range(1f, 20f)] private float _gravity;
+    private Vector3 _jumpVector;
+[Header("Camera")]
     [SerializeField] [Range(0.1f, 0.2f)] private float _turnTime;
     private float _turnSpeed;
 
@@ -43,9 +47,11 @@ public class PlayerInputController : MonoBehaviour
             Vector3 moveVector = Quaternion.Euler(0f, newAngle, 0f) * Vector3.forward;
             _characterController.Move(moveVector.normalized * _moveSpeed * Time.deltaTime);
         }
-        
-        
 
+        _jumpVector.y -= _gravity * Time.deltaTime;
+         _characterController.Move(_jumpVector * Time.deltaTime);
+
+        
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -66,6 +72,14 @@ public class PlayerInputController : MonoBehaviour
            _shooting.Shoot();
            _input.enabled = false;
             GameManager.Instance.SwitchPlayer();
+        }
+    }
+    public void Jump(InputAction.CallbackContext context)
+    {
+        Debug.Log("Jumping");
+        if (context.started && _characterController.isGrounded)
+        {
+            _jumpVector.y = _jumpForce;
         }
     }
 

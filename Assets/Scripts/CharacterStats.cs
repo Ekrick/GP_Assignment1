@@ -6,6 +6,7 @@ using Cinemachine;
 
 public class CharacterStats : MonoBehaviour
 {
+    [SerializeField] private string _playerName;
     [SerializeField] private Transform _camLook;
     [SerializeField] private CinemachineFreeLook _followCam;
     [SerializeField] private PlayerInput _input;
@@ -24,6 +25,10 @@ public class CharacterStats : MonoBehaviour
             _input.enabled = false;
             _followCam.enabled = false;
         }
+    }
+    public string GetName()
+    {
+        return _playerName;
     }
     public PlayerInput GetInput()
     {
@@ -45,7 +50,8 @@ public class CharacterStats : MonoBehaviour
         _health -= damage;
         if (_health < 0)
         {
-            this.gameObject.SetActive(false);
+             this.gameObject.SetActive(false);
+            //Destroy(this.gameObject);
         }
     }
 

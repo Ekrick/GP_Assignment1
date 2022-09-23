@@ -6,8 +6,14 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    [Header("Players")]
     [SerializeField] private CharacterStats _player1;
     [SerializeField] private CharacterStats _player2;
+
+    [Header("UI")]
+    [SerializeField] private Canvas _endGameScreen;
+    [SerializeField] private GameOverText _endText;
+
     [SerializeField] private float _bufferTime;
     private float _timePassed = 0;
     private bool _changingPlayer;
@@ -24,6 +30,17 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (_player1.enabled && !_player2.enabled)
+        {
+            _endGameScreen.enabled = true;
+            _endText.winnerText.text = GameOver(_player1);
+        }
+        else if (!_player1.enabled && _player2.enabled)
+        {
+            _endGameScreen.enabled = true;
+            _endText.winnerText.text = GameOver(_player2);
+        }
+
         if (_changingPlayer)
         {
             _timePassed += Time.deltaTime;
@@ -68,6 +85,12 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Error");
         }
+    }
+    private string GameOver(CharacterStats winner)
+    {
+        string victoryText;
+        victoryText = winner.GetName() + " wins!";
+        return victoryText;
     }
 
 }
