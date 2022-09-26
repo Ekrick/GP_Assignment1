@@ -12,6 +12,7 @@ public class PlayerInputController : MonoBehaviour
     [SerializeField] private Transform _followCamera;
     [SerializeField] private Shooting _shooting;
     [SerializeField] private CharacterStats _characterStats;
+    [SerializeField] private WeaponSwap _weaponSwap;
 
     [Header("Movement")]
     [SerializeField] [Range(1f, 10f)] private float _moveSpeed;
@@ -32,6 +33,7 @@ public class PlayerInputController : MonoBehaviour
         _shooting = GetComponent<Shooting>();
         _characterStats = GetComponent<CharacterStats>();
         _input = GetComponent<PlayerInput>();
+        _weaponSwap = GetComponent<WeaponSwap>();
         _followCamera = Camera.main.transform;
     }
 
@@ -48,8 +50,11 @@ public class PlayerInputController : MonoBehaviour
             _characterController.Move(moveVector.normalized * _moveSpeed * Time.deltaTime);
         }
 
-        _jumpVector.y -= _gravity * Time.deltaTime;
-         _characterController.Move(_jumpVector * Time.deltaTime);
+        if (!_characterController.isGrounded)
+        {
+            _jumpVector.y -= _gravity * Time.deltaTime;
+        }
+        _characterController.Move(_jumpVector * Time.deltaTime);
 
         
     }
@@ -81,6 +86,15 @@ public class PlayerInputController : MonoBehaviour
         {
             _jumpVector.y = _jumpForce;
         }
+    }
+
+    public void SwitchWeapon(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _weaponSwap.SwapWeapon();
+        }
+
     }
 
     private bool CheckActive()

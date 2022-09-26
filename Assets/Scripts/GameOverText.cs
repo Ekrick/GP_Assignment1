@@ -7,4 +7,8 @@ public class GameOverText : MonoBehaviour
 {
     public Text winnerText;
 
+    public GameOverText(Text winnerText)
+    {
+        this.winnerText = winnerText;
+    }
 }

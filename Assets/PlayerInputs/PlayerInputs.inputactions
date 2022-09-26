@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChangeCharacter",
+                    "name": "SwitchWeapon",
                     "type": "Button",
                     "id": "647ac274-e399-443c-98a3-ae1ecb4847a0",
                     "expectedControlType": "Button",
@@ -45,6 +45,15 @@
                     "name": "Aim",
                     "type": "Button",
                     "id": "a26b367c-eb7d-417e-8fe7-524ea488d63f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeCharacter",
+                    "type": "Button",
+                    "id": "9f3ae41c-b67e-47c1-87e3-248dde36b1fa",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -257,7 +266,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeCharacter",
+                    "action": "SwitchWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -269,6 +278,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "812fdc5e-d15b-4a19-933d-9a30b35a5946",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeCharacter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

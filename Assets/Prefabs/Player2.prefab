@@ -390,6 +390,7 @@ GameObject:
   - component: {fileID: 4609314383463234304}
   - component: {fileID: 4609314383463234311}
   - component: {fileID: 4423276843820956839}
+  - component: {fileID: 4918288719141971475}
   m_Layer: 7
   m_Name: Player2
   m_TagString: Player
@@ -563,13 +564,29 @@ MonoBehaviour:
     m_ActionId: df9f580d-3463-4771-81d4-97ada7432f17
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4609314383463234304}
+        m_TargetAssemblyTypeName: PlayerInputController, Assembly-CSharp
+        m_MethodName: SwitchWeapon
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 647ac274-e399-443c-98a3-ae1ecb4847a0
     m_ActionName: Player/ChangePlayer[/Keyboard/backspace]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: a26b367c-eb7d-417e-8fe7-524ea488d63f
     m_ActionName: Player/Aim[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9f3ae41c-b67e-47c1-87e3-248dde36b1fa
+    m_ActionName: Player/ChangeCharacter
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -592,6 +609,7 @@ MonoBehaviour:
   _followCamera: {fileID: 0}
   _shooting: {fileID: 4609314383463234311}
   _characterStats: {fileID: 0}
+  _weaponSwap: {fileID: 0}
   _moveSpeed: 5.28
   _jumpForce: 7
   _gravity: 15
@@ -608,6 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187ffe1b215af7041b46454321374cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weaponSwap: {fileID: 0}
   _rb: {fileID: 7087209669274930161, guid: 0770b522d29ce6446aefec8f8a2f2b75, type: 3}
   _spawnPoint: {fileID: 4609314383028358997}
   _direction: {fileID: 4609314383463233789}
@@ -624,11 +643,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3554cbbc85f424940bc2891519eabf46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerName: 
   _camLook: {fileID: 4609314383028358997}
   _followCam: {fileID: 0}
   _input: {fileID: 4609314383463234305}
   _health: 100
   _myTurn: 0
+--- !u!114 &4918288719141971475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4609314383463234309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0211201fc6a59f44b3b442b01a55b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4609314383568641249
 GameObject:
   m_ObjectHideFlags: 3
