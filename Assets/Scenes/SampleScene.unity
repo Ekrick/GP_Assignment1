@@ -797,7 +797,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.14220117, y: -0.000000019082528, z: 0.0000000027414164, w: 0.98983777}
+  m_LocalRotation: {x: 0.14220117, y: 0.00000003249807, z: -0.0000000046687076, w: 0.98983777}
   m_LocalPosition: {x: -18.86863, y: 10.5, z: -34.717155}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1068,6 +1068,26 @@ PrefabInstance:
       propertyPath: _force
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 4784742237388041249, guid: 5596447184315a4429fd337ea5761971, type: 3}
+      propertyPath: _laserRange
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784742237388041249, guid: 5596447184315a4429fd337ea5761971, type: 3}
+      propertyPath: _shoveRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784742237388041249, guid: 5596447184315a4429fd337ea5761971, type: 3}
+      propertyPath: _laserDamage
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784742237388041249, guid: 5596447184315a4429fd337ea5761971, type: 3}
+      propertyPath: _shoveRadius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784742237388041249, guid: 5596447184315a4429fd337ea5761971, type: 3}
+      propertyPath: _animationDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4784742237388041251, guid: 5596447184315a4429fd337ea5761971, type: 3}
       propertyPath: m_Name
       value: Player1
@@ -1138,11 +1158,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4784742237716124173, guid: 5596447184315a4429fd337ea5761971, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.37879452
+      value: -0.3787945
       objectReference: {fileID: 0}
     - target: {fileID: 4784742237716124173, guid: 5596447184315a4429fd337ea5761971, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.054418024
+      value: 0.05441802
       objectReference: {fileID: 0}
     - target: {fileID: 4784742237820733673, guid: 5596447184315a4429fd337ea5761971, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1290,6 +1310,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.13137673
       objectReference: {fileID: 0}
+    - target: {fileID: 4609314383028358996, guid: eb46f0ffa82d76049bc7bf144f2fe5f6, type: 3}
+      propertyPath: m_Name
+      value: ProjectileSpawn
+      objectReference: {fileID: 0}
     - target: {fileID: 4609314383089246152, guid: eb46f0ffa82d76049bc7bf144f2fe5f6, type: 3}
       propertyPath: m_Priority
       value: 1
@@ -1358,6 +1382,14 @@ PrefabInstance:
       propertyPath: _force
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 4609314383463234311, guid: eb46f0ffa82d76049bc7bf144f2fe5f6, type: 3}
+      propertyPath: _laserRange
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609314383463234311, guid: eb46f0ffa82d76049bc7bf144f2fe5f6, type: 3}
+      propertyPath: _laserDamage
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 4609314383568641250, guid: eb46f0ffa82d76049bc7bf144f2fe5f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1368,11 +1400,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4609314383568641250, guid: eb46f0ffa82d76049bc7bf144f2fe5f6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.37971938
+      value: 0.3797194
       objectReference: {fileID: 0}
     - target: {fileID: 4609314383568641250, guid: eb46f0ffa82d76049bc7bf144f2fe5f6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.047537167
+      value: 0.04753717
       objectReference: {fileID: 0}
     - target: {fileID: 4609314383568641250, guid: eb46f0ffa82d76049bc7bf144f2fe5f6, type: 3}
       propertyPath: m_LocalRotation.y

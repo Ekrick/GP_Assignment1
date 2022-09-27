@@ -87,7 +87,6 @@ public class PlayerInputController : MonoBehaviour
             _jumpVector.y = _jumpForce;
         }
     }
-
     public void SwitchWeapon(InputAction.CallbackContext context)
     {
         if (context.performed)
