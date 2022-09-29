@@ -48,9 +48,10 @@ public class CharacterStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _health -= damage;
-        if (_health < 0)
+        if (_health <= 0)
         {
-             this.gameObject.SetActive(false);
+            GameManager.Instance.SwitchPlayer();
+            this.gameObject.SetActive(false);
             //Destroy(this.gameObject);
         }
     }

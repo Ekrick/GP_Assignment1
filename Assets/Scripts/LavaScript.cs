@@ -6,9 +6,19 @@ public class LavaScript : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-
-        //Destroy(other.gameObject);
-        other.gameObject.SetActive(false);
+        if (other.gameObject.layer == 7)
+        {
+            CharacterStats stats = other.gameObject.GetComponent<CharacterStats>();
+            if (stats != null)
+            {
+                Debug.Log("Lava!!!");
+                stats.TakeDamage(stats.GetHealth());
+            }
+        }
+        else if (other.gameObject.layer == 8)
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
 

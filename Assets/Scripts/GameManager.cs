@@ -11,12 +11,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CharacterStats _player2;
 
     [Header("UI")]
-    [SerializeField] private Canvas _endGameScreen;
-    [SerializeField] private GameOverText _endText;
+    [SerializeField] private GameObject _endGameScreen;
+    [SerializeField] private GameOverScreen _endText;
 
+    [Header("Character Switching")]
     [SerializeField] private float _bufferTime;
     private float _timePassed = 0;
     private bool _changingPlayer;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -24,21 +26,26 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
         Instance = this;
-        _changingPlayer = false;
+
         _player1._myTurn = true;
         _player2._myTurn = false;
     }
+    private void Start()
+    {
+        _changingPlayer = false;
+        _player1.gameObject.SetActive(false);
+        _player2.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Confined;
+    }
     private void Update()
     {
-        if (_player1.enabled && !_player2.enabled)
+        if (_player1.gameObject.activeSelf && !_player2.gameObject.activeSelf)
         {
-            _endGameScreen.enabled = true;
-            _endText.winnerText.text = GameOver(_player1);
+            GameOver(_player1);
         }
-        else if (!_player1.enabled && _player2.enabled)
+        else if (!_player1.gameObject.activeSelf && _player2.gameObject.activeSelf)
         {
-            _endGameScreen.enabled = true;
-            _endText.winnerText.text = GameOver(_player2);
+            GameOver(_player2);
         }
 
         if (_changingPlayer)
@@ -59,8 +66,11 @@ public class GameManager : MonoBehaviour
     }   
     public void SwitchPlayer()
     {
-        CamSwap();
-        _changingPlayer = true;
+        if (_player1.enabled && _player2.enabled)
+        {
+            CamSwap();
+            _changingPlayer = true;
+        }
     }
     private void ChangeActive()
     {
@@ -86,11 +96,15 @@ public class GameManager : MonoBehaviour
             Debug.Log("Error");
         }
     }
-    private string GameOver(CharacterStats winner)
+    private void GameOver(CharacterStats winner)
     {
+        _player1.GetInput().enabled = false;
+        _player2.GetInput().enabled = false;
+        Cursor.visible = true;
         string victoryText;
         victoryText = winner.GetName() + " wins!";
-        return victoryText;
+        _endGameScreen.SetActive(true);
+        _endText.WinnerText(victoryText);
     }
 
 }

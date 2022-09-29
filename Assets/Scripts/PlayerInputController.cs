@@ -72,7 +72,7 @@ public class PlayerInputController : MonoBehaviour
     }
     public void Fire(InputAction.CallbackContext context)
     {
-        if (context.performed && CheckActive())
+        if (context.started && CheckActive())
         {
            _shooting.Shoot();
            _input.enabled = false;

@@ -632,8 +632,8 @@ MonoBehaviour:
   _direction: {fileID: 4609314383463233789}
   _rb: {fileID: 7087209669274930161, guid: 0770b522d29ce6446aefec8f8a2f2b75, type: 3}
   _force: 30
-  _laserDamage: 0
-  _laserRange: 0
+  _laserDamage: 40
+  _laserRange: 100
   _lineRenderer: {fileID: 0}
   _animationDelay: 0.5
   _shoveDamage: 10
@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3554cbbc85f424940bc2891519eabf46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerName: 
+  _playerName: Player 2
   _camLook: {fileID: 4609314383028358997}
   _followCam: {fileID: 0}
   _input: {fileID: 4609314383463234305}

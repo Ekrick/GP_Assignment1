@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7087209669274930161}
   - component: {fileID: 6204396918842589190}
   - component: {fileID: 5317320953001593898}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,10 +128,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187ffe1b215af7041b46454321374cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 0}
+  _weaponSwap: {fileID: 0}
   _spawnPoint: {fileID: 0}
   _direction: {fileID: 0}
+  _layerMask: 0
+  _rb: {fileID: 0}
   _force: 0
+  _laserDamage: 0
+  _laserRange: 0
+  _lineRenderer: {fileID: 0}
+  _animationDelay: 0
+  _shoveDamage: 0
+  _shoveRadius: 0
+  _shoveRange: 0
 --- !u!114 &5317320953001593898
 MonoBehaviour:
   m_ObjectHideFlags: 0

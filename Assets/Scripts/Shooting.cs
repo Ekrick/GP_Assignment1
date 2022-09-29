@@ -8,7 +8,6 @@ public class Shooting : MonoBehaviour
     [SerializeField] private WeaponSwap _weaponSwap;
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private Transform _direction;
-    [SerializeField] private int _layerMask;
 
     [Header("Cannon")]
     [SerializeField] private Rigidbody _rb;
@@ -32,10 +31,7 @@ public class Shooting : MonoBehaviour
         _weaponSwap = GetComponent<WeaponSwap>();
         _lineRenderer = GetComponent<LineRenderer>();
     }
-    private void Start()
-    {
-        this._layerMask = LayerMask.GetMask("Character");
-    }
+
     private void FixedUpdate()
     {
         if (!_animationCheck)
@@ -77,21 +73,27 @@ public class Shooting : MonoBehaviour
     }
     private void LaserGunFire()
     {
-        LaserVisual();
         RaycastHit hit;
-        if (Physics.Raycast(_spawnPoint.position, _direction.forward, out hit, _laserRange, _layerMask))
+        
+        if (Physics.Raycast(_spawnPoint.position, _direction.forward, out hit, _laserRange))
         {
-            //if(hit.transform.gameObject.layer == 7)
-            //{
+            LaserVisual(_spawnPoint.position, hit.point);
+            if (hit.transform.gameObject.layer == 7)
+            {
                 Debug.Log("Player Hit!");
                 hit.transform.GetComponent<CharacterStats>().TakeDamage(_laserDamage);
-            //}
+            }
+            
+        }
+        else
+        {
+            LaserVisual(_spawnPoint.position, _spawnPoint.forward * _laserRange + _spawnPoint.position);
         }
     }
     private void ShoveAttack()
     {
         RaycastHit hit;
-        if (Physics.SphereCast(_direction.position, _shoveRadius, _direction.forward, out hit, _shoveRange, _layerMask,QueryTriggerInteraction.Ignore))
+        if (Physics.SphereCast(_direction.position, _shoveRadius, _direction.forward, out hit, _shoveRange))
         {
             //if (hit.transform.gameObject.layer == 7)
             //{
@@ -100,14 +102,12 @@ public class Shooting : MonoBehaviour
             //}
         }
     }
-    private void LaserVisual()
+    private void LaserVisual(Vector3 startPos, Vector3 endPos)
     {
         if (_animationCheck)
         {
-            Vector3 start = _spawnPoint.position;
-            Vector3 end = _spawnPoint.forward * _laserRange; ;
-            _lineRenderer.SetPosition(0, start);
-            _lineRenderer.SetPosition(1, end);
+            _lineRenderer.SetPosition(0, startPos);
+            _lineRenderer.SetPosition(1, endPos);
             _animationCheck = false;
         }
 
