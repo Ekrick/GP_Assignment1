@@ -10,11 +10,14 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] private Transform _camLook;
     [SerializeField] private CinemachineFreeLook _followCam;
     [SerializeField] private PlayerInput _input;
-    [SerializeField] private float _health;
+    [SerializeField] private float _maxHealth;
+    private float _currentHealth;
     public bool _myTurn;
 
     private void Start()
     {
+        _currentHealth = _maxHealth;
+
         if (_myTurn)
         {
             _input.enabled = true;
@@ -42,17 +45,20 @@ public class CharacterStats : MonoBehaviour
 
     public float GetHealth()
     {
-        return _health;
+        return _currentHealth;
     }
-    
+    public float GetMaxHealth()
+    {
+        return _maxHealth;
+    }
+
     public void TakeDamage(float damage)
     {
-        _health -= damage;
-        if (_health <= 0)
+        _currentHealth -= damage;
+        if (_currentHealth <= 0)
         {
             GameManager.Instance.SwitchPlayer();
             this.gameObject.SetActive(false);
-            //Destroy(this.gameObject);
         }
     }
 

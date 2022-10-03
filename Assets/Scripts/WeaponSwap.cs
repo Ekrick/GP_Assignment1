@@ -52,6 +52,7 @@ public class WeaponSwap : MonoBehaviour
     {
         return _equippedIndex;
     }
+
     public void SwapWeapon()
     {
         _weaponList[_equippedIndex].ChangeEquipped();
@@ -63,13 +64,6 @@ public class WeaponSwap : MonoBehaviour
         _weaponList[_equippedIndex].ChangeEquipped();
         _activeWeapon = _weaponList[_equippedIndex];
         Debug.Log(_activeWeapon.GetWeaponType());
-        //foreach (Weapon weapon in _weaponList)
-        //{
-        //    if (weapon.GetWeaponEquipped())
-        //    {
-        //        _activeWeapon = weapon;
-        //    }
-        //}
     }
 }
 

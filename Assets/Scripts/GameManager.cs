@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private GameObject _endGameScreen;
     [SerializeField] private GameOverScreen _endText;
+    [SerializeField] private InfoPanelScript _gameUI;
 
     [Header("Character Switching")]
     [SerializeField] private float _bufferTime;
@@ -64,6 +65,21 @@ public class GameManager : MonoBehaviour
     {
         return Instance;
     }   
+    public CharacterStats GetActivePlayer()
+    {
+        if (_player1._myTurn)
+        {
+            return _player1;
+        }
+        else if (_player2._myTurn)
+        {
+            return _player2;
+        }
+        else
+        {
+            return null;
+        }
+    }
     public void SwitchPlayer()
     {
         if (_player1.enabled && _player2.enabled)
@@ -100,6 +116,7 @@ public class GameManager : MonoBehaviour
     {
         _player1.GetInput().enabled = false;
         _player2.GetInput().enabled = false;
+        _gameUI.gameObject.SetActive(false);
         Cursor.visible = true;
         string victoryText;
         victoryText = winner.GetName() + " wins!";
