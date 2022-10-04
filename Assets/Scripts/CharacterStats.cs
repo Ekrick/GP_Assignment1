@@ -62,4 +62,9 @@ public class CharacterStats : MonoBehaviour
         }
     }
 
+    public void MaxHeal()
+    {
+        _currentHealth = _maxHealth;
+    }
+
 }

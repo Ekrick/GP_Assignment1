@@ -6,6 +6,7 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     [SerializeField] private WeaponSwap _weaponSwap;
+    [SerializeField] private CharacterStats _stats;
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private Transform _direction;
 
@@ -21,15 +22,13 @@ public class Shooting : MonoBehaviour
     private float _delayTimer = 0;
     private bool _animationCheck = true;
 
-    [Header("Shove")]
-    [SerializeField] private float _shoveDamage;
-    [SerializeField] private float _shoveRadius;
-    [SerializeField] private float _shoveRange;
+
 
     public void Awake()
     {
         _weaponSwap = GetComponent<WeaponSwap>();
         _lineRenderer = GetComponent<LineRenderer>();
+        _stats = GetComponent<CharacterStats>();
     }
 
     private void FixedUpdate()
@@ -61,8 +60,7 @@ public class Shooting : MonoBehaviour
         }
         if (_weaponSwap.GetActiveIndex() == 2)
         {
-            Debug.Log("I pushed you!");
-            ShoveAttack();
+            Healing();
         }
     }
 
@@ -90,17 +88,12 @@ public class Shooting : MonoBehaviour
             LaserVisual(_spawnPoint.position, _spawnPoint.forward * _laserRange + _spawnPoint.position);
         }
     }
-    private void ShoveAttack()
+    private void Healing()
     {
-        RaycastHit hit;
-        if (Physics.SphereCast(_direction.position, _shoveRadius, _direction.forward, out hit, _shoveRange))
-        {
-            //if (hit.transform.gameObject.layer == 7)
-            //{
-                Debug.Log(hit);
-                hit.transform.GetComponent<CharacterStats>().TakeDamage(_shoveDamage);
-            //}
-        }
+        _stats.MaxHeal();
+        int index = _weaponSwap.GetActiveIndex();
+        _weaponSwap.SwapWeapon();
+        _weaponSwap.RemoveWeapon(index);
     }
     private void LaserVisual(Vector3 startPos, Vector3 endPos)
     {

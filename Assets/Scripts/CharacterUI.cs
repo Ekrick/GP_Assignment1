@@ -9,10 +9,12 @@ public class CharacterUI : MonoBehaviour
     [SerializeField] private CharacterStats _characterStats;
     [SerializeField] private Image _healthBar;
     [SerializeField] private TextMeshProUGUI _characterName;
+    [SerializeField] private Camera _mainCam;
 
     private void Awake()
     {
         _characterStats = GetComponentInParent<CharacterStats>();
+        _mainCam = Camera.main;
     }
     private void Start()
     {
@@ -21,7 +23,7 @@ public class CharacterUI : MonoBehaviour
     private void Update()
     {
         _healthBar.fillAmount = HealthPercentage();
-
+        this.transform.forward = _mainCam.transform.forward;
     }
 
 

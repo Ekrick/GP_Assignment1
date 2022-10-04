@@ -34,7 +34,7 @@ public class WeaponSwap : MonoBehaviour
 
     Weapon weapon1 = new Weapon("Cannon", true);
     Weapon weapon2 = new Weapon("Laser Gun", false);
-    Weapon weapon3 = new Weapon("Shove", false);
+    Weapon weapon3 = new Weapon("Health Pack", false);
 
     private void Start()
     {
@@ -64,6 +64,11 @@ public class WeaponSwap : MonoBehaviour
         _weaponList[_equippedIndex].ChangeEquipped();
         _activeWeapon = _weaponList[_equippedIndex];
         Debug.Log(_activeWeapon.GetWeaponType());
+    }
+
+    public void RemoveWeapon(int index)
+    {
+        _weaponList.RemoveAt(index);
     }
 }
 

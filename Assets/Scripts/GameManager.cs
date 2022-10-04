@@ -12,8 +12,10 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private GameObject _endGameScreen;
-    [SerializeField] private GameOverScreen _endText;
     [SerializeField] private InfoPanelScript _gameUI;
+    [SerializeField] private GameOverScreen _endText;
+    public static int _winnerCheck;
+
 
     [Header("Character Switching")]
     [SerializeField] private float _bufferTime;
@@ -34,19 +36,19 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _changingPlayer = false;
-        _player1.gameObject.SetActive(false);
-        _player2.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Confined;
     }
     private void Update()
     {
         if (_player1.gameObject.activeSelf && !_player2.gameObject.activeSelf)
         {
+            _winnerCheck = 1;
             GameOver(_player1);
         }
         else if (!_player1.gameObject.activeSelf && _player2.gameObject.activeSelf)
         {
             GameOver(_player2);
+            _winnerCheck = 2;
         }
 
         if (_changingPlayer)
