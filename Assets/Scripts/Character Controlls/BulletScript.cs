@@ -27,19 +27,24 @@ public class BulletScript : MonoBehaviour
         _moveVector = this._rb.velocity;
         if (_grounded)
         {
-            _timer += Time.deltaTime;
-            if (_timer > _stopCheck)
+            DestroyCheck();
+        }
+    }
+
+    private void DestroyCheck()
+    {
+        _timer += Time.deltaTime;
+        if (_timer > _stopCheck)
+        {
+            if (_moveVector.magnitude <= _minMove)
             {
-                if (_moveVector.magnitude <= _minMove)
-                {
-                    _timer = 0f;
-                    Destroy(this.gameObject);
-                }
-                else
-                {
-                    _timer = 0f;
-                    _grounded = false;
-                }
+                _timer = 0f;
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                _timer = 0f;
+                _grounded = false;
             }
         }
     }
@@ -53,7 +58,6 @@ public class BulletScript : MonoBehaviour
             CharacterStats stats = hit.gameObject.GetComponent<CharacterStats>();
             if (stats != null && _hurtful)
             {
-                Debug.Log("Player Damage!");
                 stats.TakeDamage(_damage);
                 _hurtful = false;
             }

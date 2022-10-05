@@ -72,7 +72,7 @@ public class PlayerInputController : MonoBehaviour
     }
     public void Fire(InputAction.CallbackContext context)
     {
-        if (context.started && CheckActive())
+        if (context.started && CheckActive() && _shooting != null)
         {
            _shooting.Shoot();
            _input.enabled = false;
@@ -89,7 +89,7 @@ public class PlayerInputController : MonoBehaviour
     }
     public void SwitchWeapon(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && _weaponSwap != null)
         {
             _weaponSwap.SwapWeapon();
         }

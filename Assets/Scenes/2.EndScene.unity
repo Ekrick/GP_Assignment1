@@ -1319,7 +1319,7 @@ GameObject:
   - component: {fileID: 1647901498}
   - component: {fileID: 1647901497}
   m_Layer: 7
-  m_Name: Body
+  m_Name: WinnerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1436,7 +1436,7 @@ GameObject:
   - component: {fileID: 1901326522}
   - component: {fileID: 1901326521}
   m_Layer: 7
-  m_Name: Body
+  m_Name: LoserBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

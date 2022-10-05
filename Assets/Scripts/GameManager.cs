@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameOverScreen _endText;
     public static int _winnerCheck;
 
-
     [Header("Character Switching")]
     [SerializeField] private float _bufferTime;
     private float _timePassed = 0;
@@ -40,33 +39,15 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (_player1.gameObject.activeSelf && !_player2.gameObject.activeSelf)
-        {
-            _winnerCheck = 1;
-            GameOver(_player1);
-        }
-        else if (!_player1.gameObject.activeSelf && _player2.gameObject.activeSelf)
-        {
-            GameOver(_player2);
-            _winnerCheck = 2;
-        }
+        EndCheck();
 
         if (_changingPlayer)
         {
-            _timePassed += Time.deltaTime;
-            if (_timePassed > _bufferTime)
-            {
-                _changingPlayer = false;
-                _timePassed = 0;
-                ChangeActive();
-            }
+            SwitchDelay();
         }
     }
 
-    public static GameManager GetInstance()
-    {
-        return Instance;
-    }   
+ 
     public CharacterStats GetActivePlayer()
     {
         if (_player1._myTurn)
@@ -80,14 +61,6 @@ public class GameManager : MonoBehaviour
         else
         {
             return null;
-        }
-    }
-    public void SwitchPlayer()
-    {
-        if (_player1.enabled && _player2.enabled)
-        {
-            CamSwap();
-            _changingPlayer = true;
         }
     }
     private void ChangeActive()
@@ -114,6 +87,38 @@ public class GameManager : MonoBehaviour
             Debug.Log("Error");
         }
     }
+    public void SwitchPlayer()
+    {
+        if (_player1.enabled && _player2.enabled)
+        {
+            CamSwap();
+            _changingPlayer = true;
+        }
+    }
+    private void SwitchDelay()
+    {
+        _timePassed += Time.deltaTime;
+        if (_timePassed > _bufferTime)
+        {
+            _changingPlayer = false;
+            _timePassed = 0;
+            ChangeActive();
+        }
+    }
+    private void EndCheck()
+    {
+        if (_player1.gameObject.activeSelf && !_player2.gameObject.activeSelf)
+        {
+            _winnerCheck = 1;
+            GameOver(_player1);
+        }
+        else if (!_player1.gameObject.activeSelf && _player2.gameObject.activeSelf)
+        {
+            _winnerCheck = 2;
+            GameOver(_player2);
+
+        }
+    }
     private void GameOver(CharacterStats winner)
     {
         _player1.GetInput().enabled = false;
@@ -125,5 +130,6 @@ public class GameManager : MonoBehaviour
         _endGameScreen.SetActive(true);
         _endText.WinnerText(victoryText);
     }
+
 
 }

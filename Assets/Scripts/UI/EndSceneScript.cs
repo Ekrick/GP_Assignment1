@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class EndGameScene : MonoBehaviour
+public class EndSceneScript : MonoBehaviour
 {
     [SerializeField] private Material _player1;
     [SerializeField] private Material _player2;

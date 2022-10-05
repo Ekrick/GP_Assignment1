@@ -49,26 +49,31 @@ public class Shooting : MonoBehaviour
     {
         if (_weaponSwap.GetActiveIndex() == 0)
         {
-            Debug.Log("Fire!");
+            Debug.Log("Cannon!");
             CannonFire();
 
         }
         if (_weaponSwap.GetActiveIndex() == 1)
         {
-            Debug.Log("Pew Pew");
+            Debug.Log("Laser!");
             LaserGunFire();
         }
         if (_weaponSwap.GetActiveIndex() == 2)
         {
+            Debug.Log("Healing!");
             Healing();
         }
     }
 
     private void CannonFire()
     {
-        var bullet = Instantiate<Rigidbody>(_rb, _spawnPoint.position, _direction.rotation);
-        bullet.AddForce(_direction.forward * _force, ForceMode.Impulse);
+        if (_rb != null)
+        {
+            var bullet = Instantiate<Rigidbody>(_rb, _spawnPoint.position, _direction.rotation);
+            bullet.AddForce(_direction.forward * _force, ForceMode.Impulse);
+        }
     }
+
     private void LaserGunFire()
     {
         RaycastHit hit;
@@ -88,13 +93,6 @@ public class Shooting : MonoBehaviour
             LaserVisual(_spawnPoint.position, _spawnPoint.forward * _laserRange + _spawnPoint.position);
         }
     }
-    private void Healing()
-    {
-        _stats.MaxHeal();
-        int index = _weaponSwap.GetActiveIndex();
-        _weaponSwap.SwapWeapon();
-        _weaponSwap.RemoveWeapon(index);
-    }
     private void LaserVisual(Vector3 startPos, Vector3 endPos)
     {
         if (_animationCheck)
@@ -102,6 +100,17 @@ public class Shooting : MonoBehaviour
             _lineRenderer.SetPosition(0, startPos);
             _lineRenderer.SetPosition(1, endPos);
             _animationCheck = false;
+        }
+    }
+
+    private void Healing()
+    {
+        if (_stats != null)
+        {
+            _stats.MaxHeal();
+            int index = _weaponSwap.GetActiveIndex();
+            _weaponSwap.SwapWeapon();
+            _weaponSwap.RemoveWeapon(index);
         }
 
     }

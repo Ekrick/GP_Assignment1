@@ -29,13 +29,30 @@ public class CharacterUI : MonoBehaviour
 
     private string CharacterName()
     {
-        return _characterStats.GetName();
+        if (_characterStats != null)
+        {
+            return _characterStats.GetName();
+        }
+        else
+        {
+            Debug.Log("Error, missing stats");
+            return null;
+        }
+
     }
 
     private float HealthPercentage()
     {
-        float per;
-        per = _characterStats.GetHealth() / _characterStats.GetMaxHealth();
-        return per;
+        if (_characterStats != null)
+        {
+            float per;
+            per = _characterStats.GetHealth() / _characterStats.GetMaxHealth();
+            return per;
+        }
+        else
+        {
+            Debug.Log("Error, missing stats");
+            return 0;
+        }
     }
 }

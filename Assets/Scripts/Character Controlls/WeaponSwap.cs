@@ -57,7 +57,7 @@ public class WeaponSwap : MonoBehaviour
     {
         _weaponList[_equippedIndex].ChangeEquipped();
         _equippedIndex += 1;
-        if (_equippedIndex >= _weaponList.Count)
+        if (_equippedIndex >= _weaponList.Count || _equippedIndex < 0)
         {
             _equippedIndex = 0;
         }

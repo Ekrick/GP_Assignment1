@@ -20,12 +20,30 @@ public class InfoPanelScript : MonoBehaviour
 
     private string Health()
     {
-        return _characterStats.GetHealth().ToString();
+        if (_characterStats != null)
+        {
+            return _characterStats.GetHealth().ToString();
+        }
+        else
+        {
+            Debug.Log("Error, missing swap-script");
+            return null;
+        }
+
     }
 
     private string Weapon()
     {
-        return _weaponSwap.GetActiveWeapon().GetWeaponType();
+        if (_weaponSwap != null)
+        {
+            return _weaponSwap.GetActiveWeapon().GetWeaponType();
+        }
+        else
+        {
+            Debug.Log("Error, missing swap-script");
+            return null;
+        }
+
     }
 
     private void CheckPlayer()

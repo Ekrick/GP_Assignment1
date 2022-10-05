@@ -11,7 +11,7 @@ public class LavaScript : MonoBehaviour
             CharacterStats stats = other.gameObject.GetComponent<CharacterStats>();
             if (stats != null)
             {
-                Debug.Log("Lava!!!");
+                Debug.Log("Lava!");
                 stats.TakeDamage(stats.GetHealth());
             }
         }

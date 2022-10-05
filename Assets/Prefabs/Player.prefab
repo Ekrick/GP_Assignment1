@@ -859,7 +859,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4784742237358246855}
-  m_LocalRotation: {x: 0.12422062, y: -0.00000001707311, z: 0.0000000021373872, w: 0.9922547}
+  m_LocalRotation: {x: 0.12422062, y: 0.000000017073113, z: -0.0000000021373876, w: 0.9922547}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1119,14 +1119,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 647ac274-e399-443c-98a3-ae1ecb4847a0
     m_ActionName: Player/ChangePlayer[/Keyboard/backspace]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a26b367c-eb7d-417e-8fe7-524ea488d63f
-    m_ActionName: Player/Aim[/Mouse/rightButton]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9f3ae41c-b67e-47c1-87e3-248dde36b1fa
-    m_ActionName: Player/ChangeCharacter
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1150,7 +1142,7 @@ MonoBehaviour:
   _shooting: {fileID: 4784742237388041249}
   _characterStats: {fileID: 0}
   _weaponSwap: {fileID: 0}
-  _moveSpeed: 5.28
+  _moveSpeed: 6
   _jumpForce: 7
   _gravity: 15
   _turnTime: 0.15
@@ -1167,17 +1159,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponSwap: {fileID: 0}
+  _stats: {fileID: 0}
   _spawnPoint: {fileID: 4784742237898528883}
   _direction: {fileID: 4784742237388042203}
   _rb: {fileID: 7087209669274930161, guid: 0770b522d29ce6446aefec8f8a2f2b75, type: 3}
-  _force: 30
-  _laserDamage: 40
-  _laserRange: 100
+  _force: 40
+  _laserDamage: 15
+  _laserRange: 30
   _lineRenderer: {fileID: 0}
   _animationDelay: 0.5
-  _shoveDamage: 10
-  _shoveRadius: 1
-  _shoveRange: 3
 --- !u!114 &4680331204947766145
 MonoBehaviour:
   m_ObjectHideFlags: 0
